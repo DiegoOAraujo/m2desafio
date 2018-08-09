@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Docfy</title>
+{% extends "layouts/default.njk" %}
+{% block body %}
 
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
   <div class="wrapper">
     <header id="header">
       <div class="container">
@@ -16,8 +10,8 @@
             Bem vindo<br>
             <strong>Diego Fernandes</strong>
           </p>
-          <a href="signin.html" class="btn btn-danger">
-            <img src="img/signout.svg">
+          <a href="/" class="btn btn-danger">
+            <img src="/img/signout.svg">
           </a>
         </div>
       </div>
@@ -31,7 +25,7 @@
             <form action="" method="post">
               <input type="text" name="name" placeholder="Novo projeto">
               <button type="submit" class="btn">
-                <img src="img/plus.svg">
+                <img src="/img/plus.svg">
               </button>
             </form>
           </div>
@@ -39,14 +33,14 @@
 
         <section id="content">
           <div class="project-list">
-            <a href="project.html">Exemplo de projeto</a>
-            <a href="project.html">Outro projeto</a>
-            <a href="project.html">Mais um projeto</a>
-            <a href="project.html">Projeto exemplo</a>
+            <a href="/projects">Exemplo de projeto</a>
+            <a href="/projects">Outro projeto</a>
+            <a href="/projects">Mais um projeto</a>
+            <a href="/projects">Projeto exemplo</a>
           </div>
         </section>
       </div>
     </section>
   </div>
-</body>
-</html>
+
+{% endblock %}
