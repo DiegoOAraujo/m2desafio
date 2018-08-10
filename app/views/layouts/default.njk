@@ -7,10 +7,9 @@
     <script src="/main.js"></script>
   </head>
   <body>
-  {% include "partials/flash.njk" %}
+  {% include "partials/flash.njk" %}    
+    {% block body %}
 
-  {% block body %}
-
-  {% endblock %}
-   </body>
+    {% endblock %}
+  </body>
 </html>

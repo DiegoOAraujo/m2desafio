@@ -2,20 +2,7 @@
 {% block body %}
 
   <div class="wrapper">
-    <header id="header">
-      <div class="container">
-        <h1>Docfy</h1>
-        <div class="user-info">
-          <p class="welcome">
-            Bem vindo<br>
-            <strong>Diego Fernandes</strong>
-          </p>
-          <a href="signin.html" class="btn btn-danger">
-            <img src="img/signout.svg">
-          </a>
-        </div>
-      </div>
-    </header>
+    {% include "partials/header.njk" %}
 
     <section id="main">
       <div class="container">
