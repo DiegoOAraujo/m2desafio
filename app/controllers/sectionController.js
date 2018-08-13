@@ -7,8 +7,7 @@ module.exports = {
 
   async store(req, res, next) {
     try {
-
-      const {projectId} = req.params;
+      const { projectId } = req.params;
 
       const section = await Section.create({
         ...req.body,
@@ -25,10 +24,9 @@ module.exports = {
 
   async show(req, res, next) {
     try {
-
       const { projectId, id } = req.params;
 
-      const projects = await Category.findAll({
+      const projects = await Project.findAll({
         include: [Section],
         where: {
           UserId: req.session.user.id,
@@ -52,7 +50,7 @@ module.exports = {
     }
   },
 
-  async update(req, res, next){
+  async update(req, res, next) {
     try {
       const section = await Snippet.findById(req.params.id);
 
@@ -66,7 +64,7 @@ module.exports = {
     }
   },
 
-  async destroy(req, res, next){
+  async destroy(req, res, next) {
     try {
       await Section.destroy({
         where:
