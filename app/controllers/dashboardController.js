@@ -5,14 +5,14 @@ module.exports = {
     try {
       const projects = await Project.findAll({
         include: [Section],
-        where:{        
+        where: {
           UserId: req.session.user.id,
-        }
-      });      
-      
-      const {user} = req.session;
-      
-      return res.render('dashboard/index', {user, projects});
+        },
+      });
+
+      const { user } = req.session;
+
+      return res.render('dashboard/index', { user, projects });
     } catch (err) {
       return next(err);
     }

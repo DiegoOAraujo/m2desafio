@@ -24,24 +24,24 @@ module.exports = {
 
   async show(req, res, next) {
     try {
-      const { projectId, id } = req.params;
+      const { ProjectId, id } = req.params;
 
-      const projects = await Project.findAll({
-        include: [Section],
+      const project = await Project.findById(ProjectId);
+
+      const sections = await Section.findAll({
         where: {
-          UserId: req.session.user.id,
+          ProjectId,
         },
       });
 
-      const sections = await Section.findAll({
-        where: { ProjectId: projectId },
-      });
+      const { user } = req.session;
 
       const section = await Section.findById(id);
 
-      return res.render('section/show', {
-        activeProject: projectId,
-        projects,
+      return res.render('sections/show', {
+        user,
+        activeProject: ProjectId,
+        project,
         sections,
         currentSection: section,
       });
@@ -52,7 +52,7 @@ module.exports = {
 
   async update(req, res, next) {
     try {
-      const section = await Snippet.findById(req.params.id);
+      const section = await Section.findById(req.params.id);
 
       await section.update(req.body);
 
@@ -69,8 +69,8 @@ module.exports = {
       await Section.destroy({
         where:
         {
-          id: req.params.id
-        }
+          id: req.params.id,
+        },
       });
 
       req.flash('success', 'Seção deletada com sucesso!');

@@ -18,34 +18,26 @@ module.exports = {
 
   async show(req, res, next) {
     try {
-      const projects = await Project.findById({
-        include: [Section],
+      const projectId = req.params.id;
+
+      const project = await Project.findById(projectId);
+
+      const sections = await Section.findAll({
         where: {
-          UserId: req.params.id,
+          ProjectId: projectId,
         },
       });
 
-      return res.render('projects/index', {
-        projects,
-        activeProject: req.params.id,
+      const { user } = req.session;
+
+      return res.render('projects/show', {
+        user,
+        project,
+        activeProject: projectId,
+        sections,
       });
     } catch (err) {
       return next(err);
-    }
-  },
-
-  async index(req, res, next) {
-    try {
-      const projects = await Project.findAll({
-        include: [Section],
-        where: {
-          UserId: req.session.user.id,
-        }
-      });
-      const { user } = req.session;
-      return res.render('projects/index', { user, projects });
-    } catch (err) {
-      next(err);
     }
   },
 };
