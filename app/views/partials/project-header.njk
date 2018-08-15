@@ -1,0 +1,15 @@
+<header>
+  <h2><a href="/app/dashboard" class="project-header">Dashboard</a>/<a href="#" data-modal-open="#edit-project">{{project.title}}</a></h2>
+  <div class="addon">
+    <form action="/app/projects/{{ activeProject }}?_method=DELETE" method="POST">
+      <button class="btn btn-danger" type="submit">Excluir projeto</button>
+    </form>
+  </div>
+</header>
+<div class="modal" id="edit-project">
+  <form class="modal-content" method="POST" action="/app/projects/{{ activeProject }}?_method=PUT">
+    <input type="text" name="title" placeholder="Título do projeto" value="{{ project.title }}" />
+    <button type="submit">SALVAR PROJETO</button>
+    <a href="#" data-modal-close="#edit-project">CANCELAR</a>
+  </form>
+</div>

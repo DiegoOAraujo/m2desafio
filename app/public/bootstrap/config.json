@@ -1,0 +1,9 @@
+{
+  "vars": {},
+  "css": [
+    "glyphicons.less",
+    "badges.less"
+  ],
+  "js": [],
+  "customizerUrl": "<none>"
+}

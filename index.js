@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const methodOverride = require('method-override');
 
 const routes = require('./app/routes');
 const sessionConfig = require('./config/session');
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(session(sessionConfig));
 app.use(flash());
+app.use(methodOverride('_method'))
 
 nunjucks.configure(path.resolve('app', 'views'), {
   autoescape: true,

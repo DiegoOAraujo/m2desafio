@@ -21,12 +21,8 @@
         <section id="content">
           <div class="project-list">
           {% for project in projects %}
-            <a href="/app/projects/{{project.id}}">{{project.title}}{{project.Section.length}}</a>
+            <a href="/app/projects/{{project.id}}">{{project.title}}<span class="badge">{{project.Sections.length}}</span></a>
           {% endfor %}
-            <a href="/projects">Exemplo de projeto</a>
-            <a href="/projects">Outro projeto</a>
-            <a href="/projects">Mais um projeto</a>
-            <a href="/projects">Projeto exemplo</a>
           </div>
         </section>
       </div>

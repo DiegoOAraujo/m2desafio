@@ -8,7 +8,9 @@
     </div>
 
     <form action="/app/projects/{{activeProject}}/sections/create" method="post">
-      <input type="text" name="name" placeholder="Nova seção">
+      <input type="text" name="title" placeholder="Nova seção">
+      <input type="hidden" name="content">
+
       <button type="submit" class="btn"><img src="/img/plus.svg"></button>
     </form>
   </nav>

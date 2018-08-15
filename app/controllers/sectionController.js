@@ -7,16 +7,24 @@ module.exports = {
 
   async store(req, res, next) {
     try {
-      const { projectId } = req.params;
+      
+      const { ProjectId } = req.params;
 
-      const section = await Section.create({
-        ...req.body,
-        ProjectId: projectId,
-      });
+      if (req.body.title){
+        
+        const section = await Section.create({
+          ...req.body,
+          ProjectId,
+        });
 
-      req.flash('success', 'Seção criada com sucesso');
+        req.flash('success', 'Seção criada com sucesso');
 
-      return res.redirect(`/app/projects/${projectId}/section/${section.id}`);
+        return res.redirect(`/app/projects/${ProjectId}/sections/${section.id}`);
+      }else{
+        req.flash('error', 'Preencha o nome da Seção');
+
+        return res.redirect(`/app/projects/${ProjectId}`);
+      }
     } catch (err) {
       return next(err);
     }
@@ -52,19 +60,22 @@ module.exports = {
 
   async update(req, res, next) {
     try {
+      
       const section = await Section.findById(req.params.id);
 
       await section.update(req.body);
 
-      req.flash('success', 'Secão atualizada com sucesso!');
+      req.flash('success', 'Seção atualizada com sucesso!');
 
-      return res.redirect(`/app/projects/${req.params.projectId}/sections/${section.id}`);
+      return res.redirect(`/app/projects/${req.params.ProjectId}/sections/${section.id}`);
     } catch (err) {
       return next(err);
     }
   },
 
   async destroy(req, res, next) {
+    console.log(req.params);
+    
     try {
       await Section.destroy({
         where:
@@ -75,7 +86,7 @@ module.exports = {
 
       req.flash('success', 'Seção deletada com sucesso!');
 
-      return res.redirect(`/app/projects/${req.params.projectId}`);
+      return res.redirect(`/app/projects/${req.params.ProjectId}`);
     } catch (err) {
       return next(err);
     }

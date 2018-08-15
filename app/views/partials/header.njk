@@ -6,9 +6,11 @@
         Bem vindo<br>
         <strong>{{user.name}}</strong>
       </p>
-      <a href="/signout" class="btn btn-danger">
-        <img src="/img/signout.svg">
-      </a>
+      <form action="/signout" method="GET">
+        <button type="submit" class="btn btn-danger">
+          <img src="/img/signout.svg">
+        </button>
+      </form>
     </div>
   </div>
 </header>

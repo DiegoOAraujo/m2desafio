@@ -36,12 +36,17 @@ routes.get('/app/dashboard', dashboardController.index);
  * projetos
  */
 routes.get('/app/projects/:id', projectController.show);
+routes.put('/app/projects/:id', projectController.update);
 routes.post('/app/projects/create', projectController.store);
+routes.delete('/app/projects/:id', projectController.destroy);
 
 /**
  * sections
  */
 routes.get('/app/projects/:ProjectId/sections/:id', sectionController.show);
+routes.put('/app/projects/:ProjectId/sections/:id', sectionController.update);
+routes.post('/app/projects/:ProjectId/sections/create', sectionController.store);
+routes.delete('/app/projects/:ProjectId/sections/:id', sectionController.destroy);
 
 
 /**
