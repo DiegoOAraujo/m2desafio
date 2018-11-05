@@ -1,3 +1,3 @@
 docfy
 
-app para armazenar documentação de projetos usando NodeJS.
+app para armazenar documentação de projetos, (no estilo evernote) usando NodeJS.
